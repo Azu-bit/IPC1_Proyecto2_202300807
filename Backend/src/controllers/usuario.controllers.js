@@ -3,8 +3,8 @@ const {listaUsuarios} = require('../lists/lists')
 
 const registrarUsuarios = (req, res) => {
 
-    const {carnet, nombres, password} = req.body;
-    let usuario = new Usuario(carnet, nombres, password)
+    const {carnet, nombres, apellidos, genero, facultad, carrera, correo, password} = req.body;
+    let usuario = new Usuario(carnet, nombres, apellidos, genero, facultad, carrera, correo, password)
 
     const existeUsuario = listaUsuarios.find(user => user.getCarnet() === carnet)
 
