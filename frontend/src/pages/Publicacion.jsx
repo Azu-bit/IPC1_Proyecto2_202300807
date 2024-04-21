@@ -16,6 +16,9 @@ const Publicacion = (props) => {
                         </div>
                         <div className="card-content">
                             <p>Carnet: {props.codigo}</p>
+                            <p>Nombres: {props.nombres}</p>
+                            <p>Facultad: {props.facultad}</p>
+                            <p>Carrera: {props.carrera}</p>
                             <p>{props.descripcion}</p>
                         </div>
                         <div className="card-content">

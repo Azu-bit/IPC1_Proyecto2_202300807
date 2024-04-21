@@ -9,7 +9,7 @@ const Publicaciones = () => {
     const [publicaciones, setPublicaciones] = useState([])
 
     const handleObtenerPublicaciones = () => {
-        axios.get('http://localhost:3000/verPublicacion', {})
+        axios.get('http://localhost:3000/verPublicaciones', {})
         .then(response => {
             console.log(response.data)
             setPublicaciones(response.data)
@@ -25,14 +25,18 @@ const Publicaciones = () => {
         <Navigation/>
             {publicaciones.map(publicacion => {
                 return (
-                    <> 
+                    <>
                         <Publicacion
+                            key={publicacion.idPublicacion}
                             idPublicacion={publicacion.idPublicacion}
                             codigo={publicacion.codigo}
+                            nombre={publicacion.nombre}
+                            facultad={publicacion.facultad}
+                            carrera={publicacion.carrera}
                             descripcion={publicacion.descripcion}
                             imagen={publicacion.imagen}
                         />
-                    </>    
+                    </>  
                 )
             })}
         </>

@@ -4,10 +4,14 @@ import axios from "axios";
 
 const CrearPublicacion = () => {
 
-    const {carnet, nombres, apellidos, genero, facultad, carrera, correo, password} = JSON.parse(localStorage.getItem('usuario'))
+    let usuario = localStorage.getItem('usuario');
+    let carnet, nombres, facultad, carrera, password;
+    if (usuario) {
+        ({carnet,nombres, facultad, carrera, password} =JSON.parse(usuario));
+    }
 
     const [imageB64, setimageB64] = useState("")
-    const [file, setfile] = useState()
+    const [file, setFile] = useState()
 
     const [descripcion, setDescripcion] = useState("")
 
@@ -19,6 +23,9 @@ const CrearPublicacion = () => {
         e.preventDefault();
         axios.post('http://localhost:3000/crearpublicacion', {
             codigo: carnet,
+            nombres: nombres,
+            facultad: facultad,
+            carrera: carrera,
             descripcion: descripcion,
             imagen: imageB64
         }).then(response => {
@@ -75,7 +82,6 @@ const CrearPublicacion = () => {
             </div>
         </>
     )  
-
 }
 
 export default CrearPublicacion;

@@ -9,6 +9,11 @@ import CrearPublicacion from './pages/CrearPublicacion';
 import Registro from './pages/Registro';
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize.min.js';
+import Admin from './pages/Admin';
+import AdminTabla from './pages/AdminTabla';
+import GraficarPie from './pages/GraficarPie';
+import GraficaBarras from './pages/GraficaBarras';
+import EditarUsuario from './pages/EditarUsuario';
 
 function App() {
 
@@ -21,6 +26,11 @@ function App() {
             <Route path={'/publicaciones'} element={<Publicaciones/>} />
             <Route path={'/crear-publicacion'} element={<CrearPublicacion/>}/>
             <Route path={'/registro'} element={<Registro/>}/>
+            <Route path={'/admin'} element={<Admin/>}/>
+            <Route path={'/admin-tabla'} element={<AdminTabla/>}/>
+            <Route path={'/grafica-pie'} element={<GraficarPie/>}/>
+            <Route path={'/grafica-barras'} element={<GraficaBarras/>}/>
+            <Route path={'/editar'} element={<EditarUsuario/>}/>
           </Routes>
         </BrowserRouter>
       </div>
