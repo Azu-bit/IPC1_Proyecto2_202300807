@@ -1,21 +1,30 @@
 const {Usuario} = require('../models/Usuario')
 const {listaUsuarios} = require('../lists/lists')
+const fs = require('fs');
 
 const registrarUsuarios = (req, res) => {
 
-    const {carnet, nombres, apellidos, genero, facultad, carrera, correo, password} = req.body;
-    let usuario = new Usuario(parseInt(carnet), nombres, apellidos, genero, facultad, carrera, correo, password)
+    const { carnet, nombres, apellidos, genero, facultad, carrera, correo, password } = req.body;
+    let usuario = new Usuario(parseInt(carnet), nombres, apellidos, genero, facultad, carrera, correo, password);
+//VERIFICAR USUARIO EXISTENTE
+    const existeUsuario = listaUsuarios.find(user => user.getCarnet() === parseInt(carnet));
 
-    const existeUsuario = listaUsuarios.find(user => user.getCarnet() === parseInt(carnet))
-
-    if(existeUsuario != undefined) {
-        return res.json({msg: 'El usuario ya existe'})
+    if(existeUsuario) {
+        return res.json({msg: 'El usuario ya existe'});
     }
-
+//AGREGANDO LOS DATOS A LA LSITA
     listaUsuarios.push(usuario);
+//GUARDAR LOS DATOS EN EL ARCHIVO JSON
+    fs.writeFile('usuario.json', JSON.stringify(listaUsuarios, null, 2), err => {
+        if(err) {
+            console.error('Error al guardar los datos del usuario', err);
+            return res.status(500).json({ msg: 'Error al guardar los datos del usuario' });
+        }
+        console.log('El usuario ha sido guardado correctamente');
+    });   
 
-    res.json({msg: 'El usuario ha sido guardado correctamente'})
-}
+    res.json({ msg: 'El usuario ha sido guardado correctamente' });
+};
 
 const verUsuarios = (req, res) => {
     res.json(listaUsuarios)
@@ -61,6 +70,7 @@ const editar_usuario = (req, res) => {
     if (posicionUsuario === -1) {
         return res.json({msg: 'El usuario no existe'})
     }
+
     listaUsuarios[posicionUsuario].setNombres(nombres)
     listaUsuarios[posicionUsuario].setApellidos(apellidos)
     listaUsuarios[posicionUsuario].setGenero(genero)
@@ -68,6 +78,7 @@ const editar_usuario = (req, res) => {
     listaUsuarios[posicionUsuario].setCarrera(carrera)
     listaUsuarios[posicionUsuario].setCorreo(correo)
     listaUsuarios[posicionUsuario].setPassword(password)
+    
     res.json({msg: 'El usuario ha sido editado correctamente'})
 }
 

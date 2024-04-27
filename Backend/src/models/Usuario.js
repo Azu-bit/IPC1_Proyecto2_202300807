@@ -1,3 +1,5 @@
+
+
 class Usuario {
 
     constructor(carnet, nombres, apellidos, genero, facultad, carrera, correo, password) {

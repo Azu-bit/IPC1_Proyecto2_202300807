@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useState } from "react";
+import Navigatio from "./NaBar";
 
 
 const Admin = () => {
 
-    const [json, setJson] = useState([])
+    const [json, setJson] = useState([]);
 
     const handleFileJSON = (e) => {
         const fileReader = new FileReader();
@@ -25,24 +26,26 @@ const Admin = () => {
 
     return (
         <>
-            <input type="file" onChange={handleFileJSON}/>
+            <Navigatio/>
 
-            <table>
-                <thead>
-                    <tr>
-                        <td>Carnet</td>
-                        <td>Nombres</td>
-                        <td>Apellidos</td>
-                        <td>Genero</td>
-                        <td>Facultad</td>
-                        <td>Carrera</td>
-                        <td>Correo</td>
-                        <td>Contraseña</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        json.map(item => {
+            <div className="content-container" style={{padding: '45px 20px', marginTop: '10px'}}>
+                <input type="file" onChange={handleFileJSON}/>            
+            
+                <table className="striped">
+                    <thead>
+                        <tr>
+                            <td>Carnet</td>
+                            <td>Nombres</td>
+                            <td>Apellidos</td>
+                            <td>Genero</td>
+                            <td>Facultad</td>
+                            <td>Carrera</td>
+                            <td>Correo</td>
+                            <td>Contraseña</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {json.map(item => {
                             return (
                                 <>
                                     <tr>
@@ -53,14 +56,16 @@ const Admin = () => {
                                         <td>{item.facultad}</td>
                                         <td>{item.carrera}</td>
                                         <td>{item.correo}</td>
-                                        <td>{item.contraseña}</td>
+                                        <td>{item.password}</td>
                                     </tr>
                                 </>
                             )
-                        })
-                    }
-                </tbody>
-            </table>
+                        })}
+                    </tbody>
+                </table>
+            </div>
+            
+            
         </>
     )
 }

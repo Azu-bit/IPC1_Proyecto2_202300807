@@ -9,14 +9,19 @@ const EditarUsuario = () => {
         ({carnet, nombres, apellidos, genero, facultad, carrera, correo, password} = JSON.parse(usuario));
     }
 
-    const [nombre, setNombre] = useState('')
-    const [apellido, setApellido] = useState('')
-    const [gener, setGener] = useState('')
-    const [corre, setCorre] = useState('')
-    const [faculta, setFaculta] = useState('')
-    const [carrer, setCarrer] = useState('')
-    const [paswo, setPaswo] = useState('')
-
+    const getInitialValue = (key) => {
+        let usuario = localStorage.getItem('usuario');
+        return usuario ? JSON.parse(usuario)[key] : '';
+    }
+    
+    const [nombre, setNombre] = useState(() => getInitialValue('nombres'));
+    const [apellido, setApellido] = useState(() => getInitialValue('apellidos'));
+    const [gener, setGener] = useState(() => getInitialValue('genero'));
+    const [corre, setCorre] = useState(() => getInitialValue('correo'));
+    const [faculta, setFaculta] = useState(() => getInitialValue('facultad'));
+    const [carrer, setCarrer] = useState(() => getInitialValue('carrera'));
+    const [paswo, setPaswo] = useState(() => getInitialValue('password'));
+    
     const handleChangeNombre = (e) => {
         setNombre(e.target.value)
     }
@@ -45,25 +50,36 @@ const EditarUsuario = () => {
         setPaswo(e.target.value)
     }
 
-    const handleEditarUser = (e) => {
+    const handleEditarUser = async (e) => {
         e.preventDefault()
-        axios.put('http://localhost:3000/editar-usuario', {
-            carnet: carnet,
-            nombres: nombre,
-            apellidos: apellido,
-            genero: gener,
-            correo: corre,
-            facultad: faculta,
-            carrera: carrer,
-            password: paswo
-        }).then(response => {
-            if (response && response.data) {
+        
+        console.log('Cargando...')
+
+        try {
+            const response = await axios.put('http://localhost:3000/editar-usuario', {
+                carnet: carnet,
+                nombre: nombre,
+                apellidos: apellido,
+                genero: gener,
+                correo: corre,
+                facultad: faculta,
+                carrera: carrer,
+                password: paswo
+            });
+
+            if (response.status >= 200 && response.status < 300) {
                 alert(response.data.msg)
             } else {
-                console.log('No se recibio ninguna respuesta del servidor')
+                throw new Error(`Error ${response.status}: ${response.statusText}`);
+
             }
-        }).catch(error => {console.log(error)})
-    }
+        } catch (error) {
+            console.error('Error al editar el perfil', error);
+            alert('Error al editar el perfil. Por favor, intenta de nuevo.');
+        } finally {
+            console.log('Carga completa')
+        }
+    };
 
     return (
         <>
@@ -75,7 +91,7 @@ const EditarUsuario = () => {
                 <div className="row">
                     <div className="col 12">
                         <div className="card" style={{padding: '15px'}}>
-                            <form onSubmit={handleEditarUser}>
+                            <form id="form" onSubmit={handleEditarUser}>
                                 <div className="row" >
                                     <div className="col s6">
                                         <div className="card-content">

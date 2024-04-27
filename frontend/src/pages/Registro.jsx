@@ -62,10 +62,20 @@ const Registro = () => {
             password: password
         }).then(response => {
             alert(response.data.msg)
+            localStorage.setItem('usuario', JSON.stringify({
+            carnet: codigo,
+            nombres: nombres,
+            apellidos: apellidos,
+            genero: genero,
+            correo: correo,
+            facultad: facultad,
+            carrera: carrera,
+            password: password
+            }));
         }).catch(error => {
             console.log(error)
         })
-    }
+    };
 
     
 
