@@ -5,11 +5,12 @@ const publicacionesControllers = require('../controllers/publicaciones.controlle
 
 const router = express.Router();
 
-router.post('/registroUsuarios', usuarioControllers.registrarUsuarios);
+router.post('/registrousuarios', usuarioControllers.registrarUsuarios);
 router.get('/verUsuarios', usuarioControllers.verUsuarios);
 router.post('/login', usuarioControllers.loginUsuarios);
 
 router.post('/crearpublicacion', publicacionesControllers.crear_publicacion)
+router.post('/crearpublicaciones', publicacionesControllers.crarpublicacion)
 router.get('/verPublicaciones', publicacionesControllers.ver_publicaciones)
 
 router.post('/carga-usuarios', usuarioControllers.cargarUsuarios)

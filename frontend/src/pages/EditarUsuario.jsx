@@ -58,7 +58,7 @@ const EditarUsuario = () => {
         try {
             const response = await axios.put('http://localhost:3000/editar-usuario', {
                 carnet: carnet,
-                nombre: nombre,
+                nombres: nombre,
                 apellidos: apellido,
                 genero: gener,
                 correo: corre,

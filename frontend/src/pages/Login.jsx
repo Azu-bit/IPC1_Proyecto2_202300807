@@ -14,21 +14,28 @@ const Login = () => {
         setPassword(e.target.value)
     }
 
-    const handleChangeLogin = (e) => {
+    const handleChangeLogin = async (e) => {
         e.preventDefault()
-        axios.post('http://localhost:3000/login', {
-            carnet: codigo,
-            password: password
-        }).then(response => {
+
+        try {
+            const response = await axios.post('http://localhost:3000/login', {
+                carnet: codigo,
+                password: password
+            });
+
             if (response.data.ok === true) {
-                alert(response.data.msg)
-                window.location.href = '/crear-publicacion'
-                localStorage.setItem('usuario' , JSON.stringify(response.data.user))
+                alert(response.data.msg);
+                window.location.href = "/crear-publicacion";
+                localStorage.setItem("usuario", JSON.stringify(response.data.user));
             } else {
-                alert(response.data.msg)
+                alert(response.data.msg);
             }
-        })
-    }
+        } catch (error) {
+            console.error("Error al iniciar sesión:", error);
+            alert("Error al iniciar sesión. Por favor, inténtalo de nuevo.");
+        }
+    };
+
 
     return (
         <>
@@ -55,9 +62,9 @@ const Login = () => {
                                     <button className="btn waves-effect waves-light blue-grey darken-4" 
                                     style={{fontSize: '18px'}} type="submit">Iniciar Sesion</button>
                                 </div>
-                                </form>
-                                <p style={{fontFamily: 'cursive' , textAlign: 'center'}}>¿Acaso no tienes cuenta? 
-                                <a href="/registro"><span style={{color: 'blue', textDecoration: 'underline'}}>Registrate</span></a></p>
+                            </form>
+                            <p style={{fontFamily: 'cursive' , textAlign: 'center'}}>¿Acaso no tienes cuenta? 
+                            <a href="/registro"><span style={{color: 'blue', textDecoration: 'underline'}}>Registrate</span></a></p>
                         </div>
                     </div>
                 </div>

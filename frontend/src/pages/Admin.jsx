@@ -45,10 +45,10 @@ const Admin = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {json.map(item => {
+                        {json.map((item, index)=> {
                             return (
-                                <>
-                                    <tr>
+                                
+                                    <tr key={index}>
                                         <td>{item.carnet}</td>
                                         <td>{item.nombres}</td>
                                         <td>{item.apellidos}</td>
@@ -58,7 +58,7 @@ const Admin = () => {
                                         <td>{item.correo}</td>
                                         <td>{item.password}</td>
                                     </tr>
-                                </>
+                                
                             )
                         })}
                     </tbody>

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Navigatio = () => {
+const Navigation = () => {
 
     return (
         
@@ -12,7 +12,7 @@ const Navigatio = () => {
                 <div className="nav-content" style={{background: '#ef9a9a'}}>
                     <ul className="tabs tabs-transparent">
                         <li><Link to={'/admin/usuarios'} style={{fontFamily: 'serif', fontSize: '20px'}}>Usuarios</Link></li>
-                        <li><Link to={'/admin'} style={{fontFamily: 'serif', fontSize: '20px'}}>Post</Link></li>
+                        <li><Link to={'/admin/post'} style={{fontFamily: 'serif', fontSize: '20px'}}>Post</Link></li>
                     </ul>
                 </div>
             </nav>
@@ -21,4 +21,4 @@ const Navigatio = () => {
     );
 };
 
-export default Navigatio;
+export default Navigation;

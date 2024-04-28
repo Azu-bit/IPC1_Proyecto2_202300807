@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from 'axios';
 
 const Registro = () => {
@@ -51,7 +51,7 @@ const Registro = () => {
 
     const handleRegister = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3000/registroUsuarios', {
+        axios.post('http://localhost:3000/registrousuarios', {
             carnet: codigo,
             nombres: nombres,
             apellidos: apellidos,

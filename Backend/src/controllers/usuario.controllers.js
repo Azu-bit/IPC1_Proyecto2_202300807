@@ -1,53 +1,65 @@
 const {Usuario} = require('../models/Usuario')
 const {listaUsuarios} = require('../lists/lists')
 const fs = require('fs');
+const usuariosFilePath = 'usuario.json';
 
 const registrarUsuarios = (req, res) => {
 
     const { carnet, nombres, apellidos, genero, facultad, carrera, correo, password } = req.body;
     let usuario = new Usuario(parseInt(carnet), nombres, apellidos, genero, facultad, carrera, correo, password);
-//VERIFICAR USUARIO EXISTENTE
-    const existeUsuario = listaUsuarios.find(user => user.getCarnet() === parseInt(carnet));
 
-    if(existeUsuario) {
-        return res.json({msg: 'El usuario ya existe'});
+    const UsuariosData = JSON.parse(fs.readFileSync(usuariosFilePath, 'utf8'));
+    // Verificar si el usuario ya existe
+
+    const existeUsuario = UsuariosData.find(user => user.getCarnet() === parseInt(carnet));
+
+    if (existeUsuario) {
+        return res.json({ msg: 'El usuario ya existe' });
     }
-//AGREGANDO LOS DATOS A LA LSITA
-    listaUsuarios.push(usuario);
-//GUARDAR LOS DATOS EN EL ARCHIVO JSON
-    fs.writeFile('usuario.json', JSON.stringify(listaUsuarios, null, 2), err => {
-        if(err) {
-            console.error('Error al guardar los datos del usuario', err);
-            return res.status(500).json({ msg: 'Error al guardar los datos del usuario' });
-        }
-        console.log('El usuario ha sido guardado correctamente');
-    });   
+
+    UsuariosData.push(usuario);
+
+    // Guardar los datos actualizados en el archivo JSON
+    fs.writeFileSync(usuariosFilePath, JSON.stringify(UsuariosData, null, 2));
 
     res.json({ msg: 'El usuario ha sido guardado correctamente' });
 };
 
 const verUsuarios = (req, res) => {
-    res.json(listaUsuarios)
-}
+    const UsuariosData = JSON.parse(fs.readFileSync(usuariosFilePath, 'utf8'));
+    res.json(UsuariosData);
+};
 
 const loginUsuarios = (req, res) => {
-    const {carnet, password} = req.body;
 
-    const usuario = listaUsuarios.find(user => user.getCarnet() === parseInt(carnet) && user.getPassword() === password)
+    const { carnet, password } = req.body;
 
-    if (usuario == undefined) {
-        return res.json({ok: false, msg: 'Error de usuario o contraseña'})
+    const UsuariosData = JSON.parse(fs.readFileSync(usuariosFilePath, 'utf8'));
+
+    const usuario = UsuariosData.find(user => user.carnet === parseInt(carnet) && user.password === password);
+
+    if (!usuario) {
+        return res.json({ ok: false, msg: 'Error de usuario o contraseña' });
     }
-    res.json({user: usuario, ok: true, msg: 'Se logueo correctamente'})
-}
+
+    res.json({ user: usuario, ok: true, msg: 'Se ha iniciado sesión correctamente' });
+};
 
 const cargarUsuarios = (req, res) => {
-    const json = req.body;
+    try {
+        const json = req.body;
 
-    for (user of json) {
+    for (const user of json) {
         listaUsuarios.push(new Usuario(user.carnet, user.nombres, user.apellidos, user.genero, user.facultad, user.carrera, user.correo, user.password))
     }
+//GUARDAR LOS DATOS EN EL ARCHIVO JSON
+    fs.writeFileSync(usuariosFilePath, JSON.stringify(listaUsuarios, null, 2));
+
     res.json({msg: "La carga de usuarios fue realizada correctamente"})
+    } catch (error) {
+        console.error('Error al cargar usuarios:', error);
+        res.status(500).json({ msg: 'Error interno del servidor al cargar usuarios' });
+    }
 }
 
 const eliminar_usuario = (req, res) => {
@@ -65,19 +77,24 @@ const eliminar_usuario = (req, res) => {
 const editar_usuario = (req, res) => {
     const {carnet, nombres, apellidos, genero, facultad, carrera, correo, password} = req.body;
 
-    const posicionUsuario = listaUsuarios.findIndex(user => user.getCarnet() === parseInt(carnet))
+    const UsuariosData = JSON.parse(fs.readFileSync(usuariosFilePath, 'utf8'));
+
+    const posicionUsuario = UsuariosData.findIndex(user => user.carnet === parseInt(carnet))
 
     if (posicionUsuario === -1) {
         return res.json({msg: 'El usuario no existe'})
     }
 
-    listaUsuarios[posicionUsuario].setNombres(nombres)
-    listaUsuarios[posicionUsuario].setApellidos(apellidos)
-    listaUsuarios[posicionUsuario].setGenero(genero)
-    listaUsuarios[posicionUsuario].setFacultad(facultad)
-    listaUsuarios[posicionUsuario].setCarrera(carrera)
-    listaUsuarios[posicionUsuario].setCorreo(correo)
-    listaUsuarios[posicionUsuario].setPassword(password)
+    const usuariosActualizados = UsuariosData[posicionUsuario];
+    usuariosActualizados.setNombres(nombres);
+    usuariosActualizados.setApellidos(apellidos);
+    usuariosActualizados.setGenero(genero);
+    usuariosActualizados.setFacultad(facultad);
+    usuariosActualizados.setCarrera(carrera);
+    usuariosActualizados.setCorreo(correo);
+    usuariosActualizados.setPassword(password);
+
+    fs.writeSync(usuariosFilePath, JSON.stringify(UsuariosData, null, 2));
     
     res.json({msg: 'El usuario ha sido editado correctamente'})
 }

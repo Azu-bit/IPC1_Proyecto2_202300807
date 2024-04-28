@@ -1,5 +1,52 @@
 [
   {
-    "carnet": null
+    "carnet": 2023,
+    "nombres": "Daniela",
+    "apellidos": "Chinchilla",
+    "genero": "F",
+    "facultad": "Ingenieiria",
+    "carrera": "Ciencias",
+    "correo": "dani@gmail.com",
+    "password": "123"
+  },
+  {
+    "carnet": 2023,
+    "nombres": "Daniela",
+    "apellidos": "Chinchilla",
+    "genero": "F",
+    "facultad": "Ingenieiria",
+    "carrera": "Ciencias",
+    "correo": "dani@gmail.com",
+    "password": "123"
+  },
+  {
+    "carnet": 2023,
+    "nombres": "Daniela",
+    "apellidos": "Chinchilla",
+    "genero": "F",
+    "facultad": "Ingenieiria",
+    "carrera": "Ciencias",
+    "correo": "dani@gmail.com",
+    "password": "123"
+  },
+  {
+    "carnet": 2023,
+    "nombres": "Daniela",
+    "apellidos": "Chinchilla",
+    "genero": "F",
+    "facultad": "Ingenieiria",
+    "carrera": "Ciencias",
+    "correo": "dani@gmail.com",
+    "password": "123"
+  },
+  {
+    "carnet": 202300807,
+    "nombres": "Daniela",
+    "apellidos": "Chinchilla",
+    "genero": "F",
+    "facultad": "s",
+    "carrera": "f",
+    "correo": "sani@gmail.com",
+    "password": "1"
   }
 ]

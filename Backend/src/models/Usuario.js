@@ -1,5 +1,3 @@
-
-
 class Usuario {
 
     constructor(carnet, nombres, apellidos, genero, facultad, carrera, correo, password) {
@@ -17,7 +15,7 @@ class Usuario {
         return this.carnet;
     }
 
-    getNombre() {
+    getNombres() {
         return this.nombres;
     }
 

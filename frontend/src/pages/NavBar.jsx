@@ -10,13 +10,16 @@ const Navigation = () => {
     }
 
     const handleEditProfile = () => {
-        let usuario = localStorage.getItem('usuario');
-        if (usuario) {
-            window.location.href = '/editar'
+        const usuario = JSON.parse(localStorage.getItem('usuario'));
+
+        if (usuario && usuario.carnet) {
+
+            const { carnet } = usuario;
+            window.location.href = `/editar/${carnet}`;
         } else {
-            alert('Codigo o Carnet no son correctos o no se han encontrado')
+                alert('Debes iniciar sesión para editar tu perfil.');
         }
-    }
+    };
 
     useEffect(() => {
         let elems = document.querySelectorAll('.dropdown-trigger');

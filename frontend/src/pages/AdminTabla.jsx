@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import Nav from "./Nav"
 
 const AdminTabla = () => {
 
@@ -25,9 +26,10 @@ const AdminTabla = () => {
     }, [])
 
     return (
-        <>
-            <div className="container">
-                <table>
+        <>  
+        <Nav/>
+            <div className="content-container" style={{padding: '45px 20px', marginTop: '10px'}}>
+                <table className="striped">
                     <thead>
                         <tr>
                             <td>Carnet</td>
@@ -42,10 +44,10 @@ const AdminTabla = () => {
                     </thead>
                     <tbody>
                         {
-                            usuarios.map(item => {
+                            usuarios.map((item, index) => {
                                 return (
-                                    <>
-                                        <tr>
+                                    
+                                        <tr key={index}>
                                             <td>{item.carnet}</td>
                                             <td>{item.nombres}</td>
                                             <td>{item.apellidos}</td>
@@ -56,7 +58,7 @@ const AdminTabla = () => {
                                             <td><button onClick={() => handleDeleteUser(item.carnet)}>Eliminar</button></td>
                                             <td><button>Ver</button></td>
                                         </tr>
-                                    </>
+                                    
                                 )
                             })
                         }

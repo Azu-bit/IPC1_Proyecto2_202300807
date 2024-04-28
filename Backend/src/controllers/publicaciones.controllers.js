@@ -1,13 +1,46 @@
 const {Publicacion} = require('../models/Publicacion')
 const {listaPublicaciones} = require('../lists/lists')
+const fs = require('fs');
+const publicacionFilePath = 'publicacion.json';
+const publicacionesFilePath = 'publicaciones.json'
 
-const crear_publicacion = (req, res) => {
-    const {codigo, nombres, facultad, carrera, descripcion, imagen} = req.body;
+const crear_publicacion = (publicacion) => {
+    try {
+        const publicacionesJSON = fs.readFileSync(publicacionFilePath, 'utf8');
+        const publicaciones = JSON.parse(publicacionesJSON);
 
-    let publicacion = new Publicacion(codigo, nombres, facultad, carrera, descripcion, imagen);
-    listaPublicaciones.push(publicacion)
+        publicaciones.push(publicacion);
 
-    res.json({msg: 'Se creo la publicacion'})
+        fs.writeFileSync(publicacionFilePath, JSON.stringify(publicaciones, null, 2));
+
+        return 'Se creo una publicacion';
+
+    } catch (error) {
+        console.error('Error al crear una publicacion', error);
+        return 'No se pudo crear la publicacion';
+    }
+};
+
+const crarpublicacion = (publicacion) => {
+    try {
+        const publicacionesJSON = fs.readFileSync(publicacionesFilePath, 'utf8');
+        const publicaciones = JSON.parse(publicacionesJSON);
+
+        publicaciones.puth({
+            codigo: publicacion.codigo,
+            nombres: publicacion.nombres,
+            facultad: publicacion.facultad,
+            carrera: publicacion.carrera,
+            descripcion: publicacion.descripcion,
+            categoria: publicaciones.categoria,
+            anonimo: publicaciones.anonimo
+        });
+
+        fs.writeFileSync(publicacionesFilePath, JSON.stringify(publicaciones, null, 2));
+        return 'Se creo la publicaciones correctamente'
+    } catch (error) {
+        console.error('Error al crear la publicacion')
+    }
 }
 
 const ver_publicaciones = (req, res) => {
@@ -16,5 +49,6 @@ const ver_publicaciones = (req, res) => {
 
 module.exports = {
     crear_publicacion,
+    crarpublicacion,
     ver_publicaciones
 }

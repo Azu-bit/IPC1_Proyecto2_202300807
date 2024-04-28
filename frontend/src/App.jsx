@@ -14,7 +14,10 @@ import AdminTabla from './pages/AdminTabla';
 import GraficarPie from './pages/GraficarPie';
 import GraficaBarras from './pages/GraficaBarras';
 import EditarUsuario from './pages/EditarUsuario';
-import Carga from './pages/Carga';
+import Carga from './pages/CargaPublicaciones';
+import Tablas from './pages/Tablas';
+import Administracion from './pages/Administracion';
+import Visualizacion from './pages/Visualizacion';
 
 function App() {
 
@@ -31,8 +34,10 @@ function App() {
             <Route path={'/admin-tabla'} element={<AdminTabla/>}/>
             <Route path={'/grafica-pie'} element={<GraficarPie/>}/>
             <Route path={'/grafica-barras'} element={<GraficaBarras/>}/>
-            <Route path={'/editar'} element={<EditarUsuario/>}/>
-            <Route path={'/admin'} element={<Carga/>}/>
+            <Route path={'/editar/:carnet'} element={<EditarUsuario/>}/>
+            <Route path={'/admin/post'} element={<Carga/>}/>
+            
+            <Route path={'/admin'} element={<Administracion/>}/>
           </Routes>
         </BrowserRouter>
       </div>
@@ -40,4 +45,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

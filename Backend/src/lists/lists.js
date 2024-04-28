@@ -1,5 +1,5 @@
-const listaUsuarios = []
-const listaPublicaciones = []
+const listaUsuarios = [];
+const listaPublicaciones = [];
 
 module.exports = {
     listaUsuarios,
