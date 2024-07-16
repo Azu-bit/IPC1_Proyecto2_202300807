@@ -2,6 +2,11 @@ import { Link } from "react-router-dom";
 
 const Nav = () => {
 
+    const handleLogout = () => {
+        localStorage.removeItem('usuario')
+        window.location.href = '/login'
+    }
+
     return (
 
         <nav className="nav-extend">
@@ -11,8 +16,8 @@ const Nav = () => {
             </div>
             <div className="nav-content" style={{background: '#ef9a9a'}}>
                 <ul className="tabs tabs-transparent">
-                    <li><Link to={'/admin-tabla'} style={{fontFamily: 'serif', fontSize: '20px'}}>Usuarios</Link></li>
-                    <li><Link to={'/grafica-pie'} style={{fontFamily: 'serif', fontSize: '20px'}}>Publicaciones</Link></li>
+                    <li><Link to={'/viewusers'} style={{fontFamily: 'serif', fontSize: '20px'}}>Usuarios</Link></li>
+                    <li><Link to={'/viewpost'} style={{fontFamily: 'serif', fontSize: '20px'}}>Publicaciones</Link></li>
                 </ul>
             </div>
         </nav>

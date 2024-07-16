@@ -1,54 +1,63 @@
 const {Publicacion} = require('../models/Publicacion')
 const {listaPublicaciones} = require('../lists/lists')
+const axios = require("axios");
 const fs = require('fs');
 const publicacionFilePath = 'publicacion.json';
-const publicacionesFilePath = 'publicaciones.json'
 
-const crear_publicacion = (publicacion) => {
-    try {
-        const publicacionesJSON = fs.readFileSync(publicacionFilePath, 'utf8');
-        const publicaciones = JSON.parse(publicacionesJSON);
 
-        publicaciones.push(publicacion);
+  const crear_publicacion = (req, res) => {
+    const {codigo, descripcion, categoria, anonimo, imagen} = req.body;
+    let publicacion = new Publicacion(parseInt(codigo), descripcion, categoria, anonimo, imagen);
+    
+    delete publicacion.id;
 
-        fs.writeFileSync(publicacionFilePath, JSON.stringify(publicaciones, null, 2));
+    const publicacionData = JSON.parse(fs.readFileSync(publicacionFilePath, 'utf8'));
 
-        return 'Se creo una publicacion';
+    publicacionData.push(publicacion)
 
-    } catch (error) {
-        console.error('Error al crear una publicacion', error);
-        return 'No se pudo crear la publicacion';
-    }
-};
+    fs.writeFileSync(publicacionFilePath, JSON.stringify(publicacionData, null, 2));
 
-const crarpublicacion = (publicacion) => {
-    try {
-        const publicacionesJSON = fs.readFileSync(publicacionesFilePath, 'utf8');
-        const publicaciones = JSON.parse(publicacionesJSON);
+    res.json({msg: 'Se creao la publicacion'});
 
-        publicaciones.puth({
-            codigo: publicacion.codigo,
-            nombres: publicacion.nombres,
-            facultad: publicacion.facultad,
-            carrera: publicacion.carrera,
-            descripcion: publicacion.descripcion,
-            categoria: publicaciones.categoria,
-            anonimo: publicaciones.anonimo
-        });
-
-        fs.writeFileSync(publicacionesFilePath, JSON.stringify(publicaciones, null, 2));
-        return 'Se creo la publicaciones correctamente'
-    } catch (error) {
-        console.error('Error al crear la publicacion')
-    }
 }
 
 const ver_publicaciones = (req, res) => {
-    res.json(listaPublicaciones)
+//res.json(listaPublicaciones)
+    const PublicacionesData = JSON.parse(fs.readFileSync(publicacionFilePath, 'utf8'));
+    res.json(PublicacionesData)
+}
+
+const cargarPublicacion = (req, res) => {
+    try {
+        const json = req.body;
+        const PublicacionData = JSON.parse(fs.readFileSync(publicacionFilePath, 'utf8'));
+
+        if (!Array.isArray(json)) {
+            return res.status(400).json({msg: 'Datos de entrada invalidos'});
+        }
+
+        for (const publicacion of json) {
+            const existepublicacion = PublicacionData.find(pub => pub.id === publicacion.id);
+            if (!existepublicacion) {
+                PublicacionData.push(publicacion);
+            }
+        }
+
+        fs.writeFile(publicacionFilePath, JSON.stringify(PublicacionData, null, 2), (err) => {
+            if (err) throw err;
+            console.log('Publicaciones cargadas');
+        })
+        res.json({msg: 'La carga de publicaciones fue realizada correctamente'})
+    } catch (error) {
+        console.error('Error al cargar publicaciones', error);
+        return res.status(500).json({msg: 'Error interno del servidor al cargar publicaciones'});
+    }
 }
 
 module.exports = {
     crear_publicacion,
-    crarpublicacion,
-    ver_publicaciones
+    ver_publicaciones,
+    cargarPublicacion,
 }
+
+

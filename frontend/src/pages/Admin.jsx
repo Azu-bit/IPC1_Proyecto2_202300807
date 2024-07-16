@@ -18,7 +18,11 @@ const Admin = () => {
     }
 
     const handleSaveUsers = (jsonData) => {
-        axios.post('http://localhost:3000/carga-usuarios', jsonData)
+        axios.post('http://localhost:3000/carga-usuarios', jsonData, {
+            headers: {
+                'Content-Type:': 'application/json'
+            }
+        }) 
         .then(response => {
             alert(response.data.msg)
         }).catch(error => {console.log(error)})

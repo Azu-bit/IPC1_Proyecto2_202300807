@@ -14,10 +14,11 @@ import AdminTabla from './pages/AdminTabla';
 import GraficarPie from './pages/GraficarPie';
 import GraficaBarras from './pages/GraficaBarras';
 import EditarUsuario from './pages/EditarUsuario';
-import Carga from './pages/CargaPublicaciones';
+import CargaPublicaciones from './pages/CargaPublicaciones';
 import Tablas from './pages/Tablas';
 import Administracion from './pages/Administracion';
 import Visualizacion from './pages/Visualizacion';
+
 
 function App() {
 
@@ -31,12 +32,12 @@ function App() {
             <Route path={'/crear-publicacion'} element={<CrearPublicacion/>}/>
             <Route path={'/registro'} element={<Registro/>}/>
             <Route path={'/admin/usuarios'} element={<Admin/>}/>
-            <Route path={'/admin-tabla'} element={<AdminTabla/>}/>
+            <Route path={'/viewusers'} element={<AdminTabla/>}/>
             <Route path={'/grafica-pie'} element={<GraficarPie/>}/>
             <Route path={'/grafica-barras'} element={<GraficaBarras/>}/>
             <Route path={'/editar/:carnet'} element={<EditarUsuario/>}/>
-            <Route path={'/admin/post'} element={<Carga/>}/>
-            
+            <Route path={'/admin/post'} element={<CargaPublicaciones/>}/>
+            <Route path={'/viewpost'} element={<Visualizacion/>}/>
             <Route path={'/admin'} element={<Administracion/>}/>
           </Routes>
         </BrowserRouter>

@@ -18,6 +18,13 @@ const Login = () => {
         e.preventDefault()
 
         try {
+            if (codigo == '12024' && password == '@dminIPC1') {
+                alert('Se ha iniciado sesion correctamente');
+                window.location.href = '/admin'
+                localStorage.setItem("usuario", JSON.stringify({carnet: codigo, password: password}));
+                return;
+            }
+
             const response = await axios.post('http://localhost:3000/login', {
                 carnet: codigo,
                 password: password
@@ -25,7 +32,7 @@ const Login = () => {
 
             if (response.data.ok === true) {
                 alert(response.data.msg);
-                window.location.href = "/crear-publicacion";
+                window.location.href = "/publicaciones";
                 localStorage.setItem("usuario", JSON.stringify(response.data.user));
             } else {
                 alert(response.data.msg);

@@ -12,6 +12,8 @@ const Registro = () => {
     const [carrera, setCarrera] = useState('')
     const [password, setPassword] = useState('')
     const [confirmarpassword, setConfirmarPassword] = useState('')
+    const [passwordError, setPasswordError] = useState('')
+    const [confirmPasswordError, setConfirmPasswordError] = useState('')
 
     const handleChangeCodigo = (e) => {
         setCodigo(e.target.value)
@@ -42,11 +44,30 @@ const Registro = () => {
     }
 
     const handleChangePassword = (e) => {
-        setPassword(e.target.value)
+        const password = e.target.value;
+        setPassword(e.target.value);
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        if (!passwordRegex.test(password)) {
+            setPasswordError('La contraseña debe tener al menos 8 caracteres, entre estos caracteres deberá contar con al menos 1 mayúscula, 1 minúscula y 1 carácter especial');
+        } else {
+            setPasswordError('');
+        }
     }
 
     const handleChangeConfirmarPassword = (e) => {
-        setConfirmarPassword(e.target.value)
+        const confirmarPassword = e.target.value;
+        setConfirmarPassword(confirmarPassword);
+        if (password !== confirmarPassword) {
+            setConfirmPasswordError('Las contraseñas no coinciden');
+        } else {
+            setConfirmPasswordError('');
+        }
+    }
+
+    const handleConfirmarPasswordBlur = () => {
+        if (password !== confirmarpassword) {
+            alert('Las contraseñas no coinciden');
+        }
     }
 
     const handleRegister = (e) => {
@@ -142,7 +163,8 @@ const Registro = () => {
                                     <div className="card-content">
                                         <label style={{fontSize: '21px'}}>Contraseña</label>
                                         <input type="password" style={{fontSize: '15px'}}
-                                        placeholder="Ingrese su nueva contraseña" onChange={handleChangePassword}/>
+                                        placeholder="Ingrese su nueva contraseña" onChange={handleChangePassword}
+                                        />
                                     </div>
                                 </div>
                                 <div className="col s6">

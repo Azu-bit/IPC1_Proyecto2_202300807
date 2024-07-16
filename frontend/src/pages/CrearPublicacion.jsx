@@ -1,22 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navigation from "./NavBar";
 import axios from "axios";
 
 const CrearPublicacion = () => {
 
-    let usuario = localStorage.getItem('usuario');
-    let carnet, nombres, facultad, carrera, password;
-    if (usuario) {
-        ({carnet,nombres, facultad, carrera, password} =JSON.parse(usuario));
-    }
-
-    const [imageB64, setimageB64] = useState("")
+    const [imageB64, setImageB64] = useState("");
     const [file, setFile] = useState()
-    
 
     const [descripcion, setDescripcion] = useState("")
     const [categoria, setCategoria] = useState("")
-    const [anonimo, setAnonimo] = useState("")
+    const [anonimo, setAnonimo] = useState(false)
 
     const handleChangeDescripcion = (e) => {
         setDescripcion(e.target.value)
@@ -27,24 +20,51 @@ const CrearPublicacion = () => {
     }
 
     const handleChangeAnonimo = (e) => {
-        setAnonimo(e.target.value)
+        setAnonimo(e.target.checked)
     }
 
-    const handleRegisterPublicacion = (e) => {
+    const handleRegisterPublicacion = async (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3000/crearpublicacion', {
-            codigo: carnet,
-            nombres: nombres,
-            facultad: facultad,
-            carrera: carrera,
-            descripcion: descripcion,
-            categoria: categoria,
-            anonimo: anonimo,
-            imagen: imageB64
-        }).then(response => {
-            alert(response.data.msg)
-        }).catch(error => {console.log(error)})
-    }
+        try {
+            const usuarioData = JSON.parse(localStorage.getItem("usuario"));
+            const fechaPublicacion = new Date().toISOString;
+
+            let publicacion = {
+//codigo: usuarioData.carnet,
+                descripcion: descripcion,
+                categoria: categoria,
+                anonimo: anonimo.toString(),
+                imagen: imageB64,
+                fechaPublicacion: fechaPublicacion
+            };
+
+            if (!anonimo) {
+                publicacion = {
+                    ...publicacion,
+                    codigo: usuarioData.carnet,
+                    nombres: usuarioData.nombres,
+                    facultad: usuarioData.facultad,
+                    carrera: usuarioData.carrera,
+                };
+            } else {
+                publicacion = {
+                    ...publicacion,
+                    nombres: "Usuario Anonimo",
+                    facultad: "Universidad",
+                    carrera: "Universidad",
+                };
+            }
+            axios.post('http://localhost:3000/crearpublicacion', publicacion).then(response => {
+                alert(response.data.msg);
+                localStorage.setItem('publicacion', JSON.stringify(publicacion))
+    
+            }).catch(error => {
+                console.error("Error al crear una publicacion", error);
+            });
+        } catch (error) {
+            console.error("Error al crear una publicación", error);
+        }
+    };
 
     const convertToBase64 = (file) => {
         return new Promise((resolve, reject) => {
@@ -62,8 +82,7 @@ const CrearPublicacion = () => {
     const handleFileImageUpload = async (e) => {
         const file = e.target.files[0];
         const base64 = await convertToBase64(file);
-        setimageB64(base64)
-        
+        setImageB64(base64)
         console.log(base64)
     }
 
@@ -88,10 +107,10 @@ const CrearPublicacion = () => {
                                         <label style={{fontSize: '16px', fontFamily: '-moz-initial'}}>Categorias</label>
                                         <select className="browser-default" onChange={handleChangeCategoria}>
                                             <option value="" disabled defaultValue>Selecciona una opcion</option>
-                                            <option value="1">Anuncio Importante</option>
-                                            <option value="2">Divertido</option>
-                                            <option value="3">Academico</option>
-                                            <option value="4">Variedad</option>
+                                            <option value="Anuncio importante">Anuncio Importante</option>
+                                            <option value="Divertido">Divertido</option>
+                                            <option value="Academico">Academico</option>
+                                            <option value="Variedad">Variedad</option>
                                         </select>
                                     </div> 
                                     </div>
@@ -103,7 +122,7 @@ const CrearPublicacion = () => {
                                         <div className="switch">
                                             <label>
                                                 False
-                                                <input type="checkbox" onChange={handleChangeAnonimo}/>
+                                                <input type="checkbox" checked={anonimo} onChange={handleChangeAnonimo}/>
                                                 <span className="lever"></span>
                                                 True
                                             </label>

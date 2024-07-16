@@ -1,52 +1,345 @@
 [
   {
-    "carnet": 2023,
-    "nombres": "Daniela",
-    "apellidos": "Chinchilla",
+    "carnet": 202358344,
+    "nombres": "Pedro",
+    "apellidos": "Díaz",
     "genero": "F",
-    "facultad": "Ingenieiria",
-    "carrera": "Ciencias",
-    "correo": "dani@gmail.com",
-    "password": "123"
+    "facultad": "Ingeniería",
+    "carrera": "Ingeniería en Sistemas",
+    "correo": "pedro.díaz60@outlook.com",
+    "password": "@DZ@Zs4A"
   },
   {
-    "carnet": 2023,
-    "nombres": "Daniela",
-    "apellidos": "Chinchilla",
-    "genero": "F",
-    "facultad": "Ingenieiria",
-    "carrera": "Ciencias",
-    "correo": "dani@gmail.com",
-    "password": "123"
+    "carnet": 202347789,
+    "nombres": "Juan",
+    "apellidos": "Pérez",
+    "genero": "M",
+    "facultad": "Ciencias Económicas",
+    "carrera": "Administración de Empresas",
+    "correo": "juan.pérez58@gmail.com",
+    "password": "dYR@Di2f"
   },
   {
-    "carnet": 2023,
-    "nombres": "Daniela",
-    "apellidos": "Chinchilla",
-    "genero": "F",
-    "facultad": "Ingenieiria",
-    "carrera": "Ciencias",
-    "correo": "dani@gmail.com",
-    "password": "123"
+    "carnet": 202323281,
+    "nombres": "María",
+    "apellidos": "Gómez",
+    "genero": "M",
+    "facultad": "Ciencias Médicas",
+    "carrera": "Odontología",
+    "correo": "maría.gómez94@hotmail.com",
+    "password": "Q@5zW8dE"
   },
   {
-    "carnet": 2023,
-    "nombres": "Daniela",
-    "apellidos": "Chinchilla",
+    "carnet": 202365719,
+    "nombres": "Juan",
+    "apellidos": "Hernández",
     "genero": "F",
-    "facultad": "Ingenieiria",
-    "carrera": "Ciencias",
-    "correo": "dani@gmail.com",
-    "password": "123"
+    "facultad": "Ingeniería",
+    "carrera": "Ingeniería Civil",
+    "correo": "juan.hernández69@yahoo.com",
+    "password": "3mcw_giZ"
   },
   {
-    "carnet": 202300807,
-    "nombres": "Daniela",
-    "apellidos": "Chinchilla",
+    "carnet": 202312198,
+    "nombres": "Sergio",
+    "apellidos": "Rodríguez",
+    "genero": "M",
+    "facultad": "Ciencias Económicas",
+    "carrera": "Contaduría Pública",
+    "correo": "sergio.rodríguez37@yahoo.com",
+    "password": "3@VAukA3"
+  },
+  {
+    "carnet": 202391217,
+    "nombres": "María",
+    "apellidos": "López",
     "genero": "F",
-    "facultad": "s",
-    "carrera": "f",
-    "correo": "sani@gmail.com",
-    "password": "1"
+    "facultad": "Ciencias Médicas",
+    "carrera": "Odontología",
+    "correo": "maría.lópez82@yahoo.com",
+    "password": "1IDvOta@"
+  },
+  {
+    "carnet": 202357104,
+    "nombres": "Messi",
+    "apellidos": "López",
+    "genero": "F",
+    "facultad": "Ingeniería",
+    "carrera": "Ingeniería Electrica",
+    "correo": "messi.lópez62@outlook.com",
+    "password": "-0NYsJ1_"
+  },
+  {
+    "carnet": 202394448,
+    "nombres": "Laura",
+    "apellidos": "Jimenez",
+    "genero": "F",
+    "facultad": "Ciencias Económicas",
+    "carrera": "Economía",
+    "correo": "laura.jimenez47@hotmail.com",
+    "password": "_lbQM9C-"
+  },
+  {
+    "carnet": 202377302,
+    "nombres": "Sergio",
+    "apellidos": "García",
+    "genero": "F",
+    "facultad": "Ciencias Económicas",
+    "carrera": "Contaduría Pública",
+    "correo": "sergio.garcía18@gmail.com",
+    "password": "PC9Y_2sn"
+  },
+  {
+    "carnet": 202354880,
+    "nombres": "Sergio",
+    "apellidos": "Alvarez",
+    "genero": "F",
+    "facultad": "Ciencias Jurídicas y Sociales",
+    "carrera": "Notariado",
+    "correo": "sergio.alvarez78@gmail.com",
+    "password": "b1@HnqUo"
+  },
+  {
+    "carnet": 202398578,
+    "nombres": "Luis",
+    "apellidos": "León",
+    "genero": "M",
+    "facultad": "Ciencias Jurídicas y Sociales",
+    "carrera": "Notariado",
+    "correo": "luis.león65@hotmail.com",
+    "password": "gj4-1lY2"
+  },
+  {
+    "carnet": 202378898,
+    "nombres": "Jorge",
+    "apellidos": "Sánchez",
+    "genero": "M",
+    "facultad": "Ciencias Económicas",
+    "carrera": "Administración de Empresas",
+    "correo": "jorge.sánchez36@outlook.com",
+    "password": "rfhu9-7Q"
+  },
+  {
+    "carnet": 202338260,
+    "nombres": "Messi",
+    "apellidos": "Jimenez",
+    "genero": "M",
+    "facultad": "Ciencias Médicas",
+    "carrera": "Medicina",
+    "correo": "messi.jimenez21@yahoo.com",
+    "password": "Ujh00O@D"
+  },
+  {
+    "carnet": 202362726,
+    "nombres": "Laura",
+    "apellidos": "Gómez",
+    "genero": "F",
+    "facultad": "Ciencias Económicas",
+    "carrera": "Administración de Empresas",
+    "correo": "laura.gómez29@hotmail.com",
+    "password": "y2N_jQbp"
+  },
+  {
+    "carnet": 202326799,
+    "nombres": "María",
+    "apellidos": "Pérez",
+    "genero": "M",
+    "facultad": "Ciencias Químicas y Farmacia",
+    "carrera": "Química y Farmacia",
+    "correo": "maría.pérez3@hotmail.com",
+    "password": "-q2iAGVj"
+  },
+  {
+    "carnet": 202362086,
+    "nombres": "Laura",
+    "apellidos": "García",
+    "genero": "M",
+    "facultad": "Ciencias Químicas y Farmacia",
+    "carrera": "Bioquímica",
+    "correo": "laura.garcía35@outlook.com",
+    "password": "f7gw_sw9"
+  },
+  {
+    "carnet": 202342202,
+    "nombres": "Juan",
+    "apellidos": "Díaz",
+    "genero": "F",
+    "facultad": "Ingeniería",
+    "carrera": "Ingeniería en Sistemas",
+    "correo": "juan.díaz78@yahoo.com",
+    "password": "_oB7xC6_"
+  },
+  {
+    "carnet": 202319858,
+    "nombres": "Samuel",
+    "apellidos": "Santos",
+    "genero": "F",
+    "facultad": "Ciencias Económicas",
+    "carrera": "Contaduría Pública",
+    "correo": "samuel.santos7@hotmail.com",
+    "password": "@Ppk3hK9"
+  },
+  {
+    "carnet": 202373739,
+    "nombres": "David",
+    "apellidos": "Sánchez",
+    "genero": "F",
+    "facultad": "Ciencias Jurídicas y Sociales",
+    "carrera": "Ciencias Políticas",
+    "correo": "david.sánchez62@gmail.com",
+    "password": "HE2-8haV"
+  },
+  {
+    "carnet": 202317535,
+    "nombres": "Pedro",
+    "apellidos": "Hernández",
+    "genero": "F",
+    "facultad": "Ciencias Jurídicas y Sociales",
+    "carrera": "Notariado",
+    "correo": "pedro.hernández47@outlook.com",
+    "password": "v2_zh57w"
+  },
+  {
+    "carnet": 202370446,
+    "nombres": "Juan",
+    "apellidos": "Santos",
+    "genero": "F",
+    "facultad": "Ingeniería",
+    "carrera": "Ingeniería Mecánica",
+    "correo": "juan.santos63@outlook.com",
+    "password": "0i@6o1E0"
+  },
+  {
+    "carnet": 202363752,
+    "nombres": "Pedro",
+    "apellidos": "Alvarez",
+    "genero": "F",
+    "facultad": "Ingeniería",
+    "carrera": "Ingeniería Mecánica",
+    "correo": "pedro.alvarez49@outlook.com",
+    "password": "o5g0tNv-"
+  },
+  {
+    "carnet": 202385818,
+    "nombres": "Luis",
+    "apellidos": "López",
+    "genero": "F",
+    "facultad": "Ingeniería",
+    "carrera": "Ingeniería Electrica",
+    "correo": "luis.lópez86@yahoo.com",
+    "password": "9uBjDak_"
+  },
+  {
+    "carnet": 202353570,
+    "nombres": "Samuel",
+    "apellidos": "Pérez",
+    "genero": "M",
+    "facultad": "Ciencias Químicas y Farmacia",
+    "carrera": "Química y Farmacia",
+    "correo": "samuel.pérez20@gmail.com",
+    "password": "_g73mmcu"
+  },
+  {
+    "carnet": 202310277,
+    "nombres": "Samuel",
+    "apellidos": "Díaz",
+    "genero": "F",
+    "facultad": "Ingeniería",
+    "carrera": "Ingeniería Electrica",
+    "correo": "samuel.díaz4@yahoo.com",
+    "password": "ltjPH_V8"
+  },
+  {
+    "carnet": 202394305,
+    "nombres": "David",
+    "apellidos": "Hernández",
+    "genero": "M",
+    "facultad": "Ciencias Jurídicas y Sociales",
+    "carrera": "Ciencias Políticas",
+    "correo": "david.hernández4@hotmail.com",
+    "password": "@AB1t5@0"
+  },
+  {
+    "carnet": 202380263,
+    "nombres": "Pedro",
+    "apellidos": "León",
+    "genero": "F",
+    "facultad": "Ingeniería",
+    "carrera": "Ingeniería en Sistemas",
+    "correo": "pedro.león52@gmail.com",
+    "password": "UVx6Y-7s"
+  },
+  {
+    "carnet": 202370525,
+    "nombres": "Sergio",
+    "apellidos": "Díaz",
+    "genero": "M",
+    "facultad": "Ciencias Químicas y Farmacia",
+    "carrera": "Bioquímica",
+    "correo": "sergio.díaz58@yahoo.com",
+    "password": "iYWINq@6"
+  },
+  {
+    "carnet": 202374576,
+    "nombres": "David",
+    "apellidos": "Alvarez",
+    "genero": "M",
+    "facultad": "Ciencias Económicas",
+    "carrera": "Administración de Empresas",
+    "correo": "david.alvarez60@gmail.com",
+    "password": "_s3vO3--"
+  },
+  {
+    "carnet": 202394765,
+    "nombres": "Luis",
+    "apellidos": "Jimenez",
+    "genero": "M",
+    "facultad": "Ciencias Económicas",
+    "carrera": "Contaduría Pública",
+    "correo": "luis.jimenez71@gmail.com",
+    "password": "_i8LgrdW"
+  },
+  {
+    "carnet": 202344555,
+    "nombres": "Luis",
+    "apellidos": "Santos",
+    "genero": "F",
+    "facultad": "Ingeniería",
+    "carrera": "Ingeniería en Sistemas",
+    "correo": "luis.santos59@outlook.com",
+    "password": "2@3mRicL"
+  },
+  {
+    "carnet": 202319441,
+    "nombres": "Jorge",
+    "apellidos": "Gómez",
+    "genero": "F",
+    "facultad": "Ciencias Médicas",
+    "carrera": "Medicina",
+    "correo": "jorge.gómez77@outlook.com",
+    "password": "LoA_q2Mq"
+  },
+  {
+    "carnet": 202387224,
+    "nombres": "Messi",
+    "apellidos": "Flores",
+    "genero": "M",
+    "facultad": "Ingeniería",
+    "carrera": "Ingeniería Mecánica",
+    "correo": "messi.flores12@gmail.com",
+    "password": "Au0lR-Mn"
+  },
+  {
+    "carnet": 202366763,
+    "nombres": "Jorge",
+    "apellidos": "Hernández",
+    "genero": "F",
+    "facultad": "Ciencias Económicas",
+    "carrera": "Contaduría Pública",
+    "correo": "jorge.hernández39@hotmail.com",
+    "password": "QV_W6fqu"
+  },
+  {
+    "carnet": null
   }
 ]

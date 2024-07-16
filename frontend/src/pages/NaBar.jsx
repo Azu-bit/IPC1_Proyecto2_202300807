@@ -2,6 +2,11 @@ import { Link } from "react-router-dom";
 
 const Navigation = () => {
 
+    const handleLogout = () => {
+        localStorage.removeItem('usuario')
+        window.location.href = '/login'
+    }
+
     return (
         
             <nav className="nav-extend">
@@ -13,6 +18,9 @@ const Navigation = () => {
                     <ul className="tabs tabs-transparent">
                         <li><Link to={'/admin/usuarios'} style={{fontFamily: 'serif', fontSize: '20px'}}>Usuarios</Link></li>
                         <li><Link to={'/admin/post'} style={{fontFamily: 'serif', fontSize: '20px'}}>Post</Link></li>
+                    </ul>
+                    <ul id="dropdown2" className="dropdown-content" style={{fontFamily: '-moz-initial', fontSize: '22px'}}>
+                        <li><a href="#!" onClick={handleLogout} style={{fontFamily: 'serif', color: '#006064', fontSize: '19px'}}>Cerrar Sesion</a></li>
                     </ul>
                 </div>
             </nav>
